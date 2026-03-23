@@ -13,7 +13,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --primary:   #4F46E5;
+      --primary:   #76008a;
       --primary-light: #818CF8;
       --secondary: #F59E0B;
       --accent:    #22C55E;
@@ -117,9 +117,18 @@
 
     .logo-text span { color: var(--secondary); }
 
-    nav { display: flex; align-items: center; gap: 2px; }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+
       text-decoration: none;
       color: var(--text);
       font-weight: 700;
@@ -132,6 +141,12 @@
     nav a:hover {
       background: var(--primary);
       color: #fff;
+    }
+
+    .nav-home img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
     }
 
     /* ─── Hero ───────────────────────────────────────────────── */
@@ -568,7 +583,7 @@
       gap: 24px;
     }
 
-    .footer-logo .logo-text { color: #fff; }
+    .footer-logo .logo-text { color: #ffffff; }
     .footer-logo .logo-text span { color: var(--secondary); }
 
     .footer-links {
@@ -630,7 +645,9 @@
       <span class="logo-text">Zakaa<span>brand</span></span>
     </a>
     <nav>
-      <a href="#">الرئيسية</a>
+      <a href="#" class="nav-home">
+      <img src="images/home-icon.png" alt="الرئيسية">
+      </a>
       <a href="#products">الألعاب</a>
       <a href="#about">من نحن</a>
     </nav>
