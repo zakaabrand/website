@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +37,9 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      direction: rtl;
+      text-align: right;
+
     }
 
     /* ─── Decorative blobs (pure CSS) ───────────────────────── */
@@ -77,14 +80,32 @@
       text-decoration: none;
     }
 
-    .logo-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    .logo-img {
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
+      object-fit: cover; /* or contain if logo has padding */
+      
+      /* Optional: keep the same shadow style */
       box-shadow: 0 4px 14px rgba(79,70,229,.35);
     }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(79,70,229,.35);
+    }
+
+    /* .logo-img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    } */
 
     .logo-text {
       font-family: 'Baloo 2', cursive;
@@ -603,17 +624,18 @@
 <header>
   <div class="header-inner">
     <a href="#" class="logo">
-      <div class="logo-icon">🧩</div>
+      <div class="logo-icon">
+        <img src="images/photo_1_2026-03-21_19-17-39.jpg" alt="logo" class="logo-img">
+      </div>
       <span class="logo-text">Zakaa<span>brand</span></span>
     </a>
     <nav>
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
+      <a href="#">الرئيسية</a>
+      <a href="#products">الألعاب</a>
+      <a href="#about">من نحن</a>
     </nav>
   </div>
 </header>
-
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero">
@@ -626,16 +648,17 @@
     <div class="hero-content">
       <div class="hero-tag">
         <span class="dot"></span>
-        Award-Winning Educational Games
+        ألعاب تعليمية
       </div>
-      <h1>Smart Games<br>for <em>Smart Kids</em></h1>
+      <h1>ألعاب ذكية<br>ل<em>أطفال أذكياء</em></h1>
       <p>
-        Spark curiosity, develop critical thinking, and ignite creativity — through beautifully crafted games that make learning the most exciting adventure.
+حرّك الفضول، وطوّر التفكير النقدي، وأشعل الإبداع من خلال ألعاب مصمّمة بعناية تجعل التعلّم أكثر المغامرات إثارة.
       </p>
       <div class="hero-badges">
-        <div class="badge"><span class="badge-icon">🧠</span> Brain Development</div>
-        <div class="badge"><span class="badge-icon">🎨</span> Creative Thinking</div>
-        <div class="badge"><span class="badge-icon">🏆</span> Award Winning</div>
+        <div class="badge"><span class="badge-icon">🧠</span>تنمية المهارات الذهنية</div>
+        <div class="badge"><span class="badge-icon">🎨</span> التفكير الإبداعي</div>
+        <div class="badge"><span class="badge-icon">🏆</span> تعزيز قدرات الأطفال</div>
+        <div class="badge"><span class="badge-icon">⭐</span> بناء مهارات الأطفال الأساسية</div>
       </div>
     </div>
 
@@ -648,15 +671,15 @@
         />
         <div class="sticker sticker-1">
           <span class="sticker-emoji">⭐</span>
-          <span class="sticker-label">Ages 3–12</span>
+          <span class="sticker-label">من عمر ٣ إلى ١٢ سنة</span>
         </div>
         <div class="sticker sticker-2">
           <span class="sticker-emoji">🏅</span>
-          <span class="sticker-label">100% Safe Materials</span>
+          <span class="sticker-label">مواد آمنة للأطفال</span>
         </div>
         <div class="sticker sticker-3">
           <span class="sticker-emoji">🌍</span>
-          <span class="sticker-label">Eco-Friendly</span>
+          <span class="sticker-label">مواد صديقة للبيئة</span>
         </div>
       </div>
     </div>
@@ -668,8 +691,8 @@
 <section id="products">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-tag">Our Collection</div>
-      <h2 class="section-title">Explore Our <span>Games</span></h2>
+      <div class="section-tag">مجموعتنا</div>
+      <h2 class="section-title">اكتشف <span> ألعابنا </span></h2>
       <p class="section-sub">Carefully designed to challenge young minds, encourage teamwork, and make every playtime a learning moment.</p>
     </div>
 
