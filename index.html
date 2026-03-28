@@ -1,1011 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zakaa — Smart Games for Smart Kids</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ─── Reset & Variables ───────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary:   #76008a;
-      --primary-light: #818CF8;
-      --secondary: #F59E0B;
-      --accent:    #22C55E;
-      --accent2:   #EC4899;
-      --bg:        #F9FAFB;
-      --bg-card:   #FFFFFF;
-      --text:      #1F2937;
-      --text-muted:#6B7280;
-      --radius-lg: 24px;
-      --radius-xl: 36px;
-      --shadow-sm: 0 2px 12px rgba(79,70,229,.08);
-      --shadow-md: 0 8px 32px rgba(79,70,229,.14);
-      --shadow-lg: 0 20px 60px rgba(79,70,229,.18);
-      --transition: .35s cubic-bezier(.34,1.56,.64,1);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      direction: rtl;
-      text-align: right;
-
-    }
-
-    /* ─── Decorative blobs (pure CSS) ───────────────────────── */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: .18;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ─── Header ─────────────────────────────────────────────── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(249,250,251,.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1.5px solid rgba(79,70,229,.09);
-      padding: 0 5vw;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      object-fit: cover; /* or contain if logo has padding */
-      
-      /* Optional: keep the same shadow style */
-      box-shadow: 0 4px 14px rgba(79,70,229,.35);
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 14px rgba(79,70,229,.35);
-    }
-
-    /* .logo-img {
-      width: 70%;
-      height: 70%;
-      object-fit: contain;
-    } */
-
-    .logo-text {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -.5px;
-    }
-
-    .logo-text span { color: var(--secondary); }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    nav a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      font-size: .95rem;
-      padding: 8px 18px;
-      border-radius: 50px;
-      transition: background .2s, color .2s;
-    }
-
-    nav a:hover {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .nav-home img {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-    }
-
-    /* ─── Hero ───────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 90px 5vw 80px;
-      background: linear-gradient(160deg, #EEF2FF 0%, #FEF9EE 55%, #F0FDF4 100%);
-    }
-
-    .blob-1 { width: 500px; height: 500px; background: var(--primary); top: -120px; right: -80px; }
-    .blob-2 { width: 380px; height: 380px; background: var(--secondary); bottom: -80px; left: -60px; }
-    .blob-3 { width: 260px; height: 260px; background: var(--accent); top: 40%; right: 28%; }
-
-    .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(79,70,229,.1);
-      color: var(--primary);
-      font-weight: 800;
-      font-size: .82rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 50px;
-      margin-bottom: 22px;
-    }
-
-    .hero-tag .dot {
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50%      { transform: scale(1.5); opacity: .6; }
-    }
-
-    .hero h1 {
-      font-family: 'Baloo 2', cursive;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.12;
-      color: var(--text);
-      margin-bottom: 22px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--primary), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 1.12rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 440px;
-      margin-bottom: 38px;
-    }
-
-    .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 12px;
-    }
-
-    .badge {
-      display: flex; align-items: center; gap: 8px;
-      background: #fff;
-      border-radius: 50px;
-      padding: 10px 18px;
-      font-weight: 700;
-      font-size: .88rem;
-      box-shadow: var(--shadow-sm);
-      color: var(--text);
-    }
-
-    .badge-icon { font-size: 1.1rem; }
-
-    /* Hero image side */
-    .hero-visual {
-      position: relative;
-      display: flex; justify-content: center; align-items: center;
-    }
-
-    .hero-img-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .hero-img-wrap img {
-      width: 100%;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 4/3.4;
-    }
-
-    /* Floating sticker cards */
-    .sticker {
-      position: absolute;
-      background: #fff;
-      border-radius: 18px;
-      padding: 12px 18px;
-      font-weight: 800;
-      font-size: .85rem;
-      box-shadow: var(--shadow-md);
-      display: flex; align-items: center; gap: 8px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .sticker-1 { top: -18px; left: -30px; animation-delay: 0s; }
-    .sticker-2 { bottom: 24px; right: -30px; animation-delay: 1.3s; }
-    .sticker-3 { top: 44%; left: -44px; animation-delay: 2.1s; }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-
-    .sticker-emoji { font-size: 1.4rem; }
-    .sticker-label { color: var(--primary); }
-
-    /* ─── Section Wrapper ─────────────────────────────────── */
-    .section-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 5vw;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 52px;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: .8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--secondary);
-      background: rgba(245,158,11,.1);
-      padding: 5px 16px;
-      border-radius: 50px;
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-family: 'Baloo 2', cursive;
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--text);
-    }
-
-    .section-title span { color: var(--primary); }
-
-    .section-sub {
-      margin-top: 14px;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 520px;
-      margin-left: auto; margin-right: auto;
-      line-height: 1.7;
-    }
-
-    /* ─── Products Section ──────────────────────────────────── */
-    #products {
-      padding: 100px 0;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
-
-    .product-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition);
-      cursor: default;
-    }
-
-    .product-card:hover {
-      transform: translateY(-12px) scale(1.025);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .product-card:hover .product-img img {
-      transform: scale(1.08);
-    }
-
-    .product-img {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 1 / 1.05;
-      background: linear-gradient(145deg, #EEF2FF, #FEF9EE);
-    }
-
-    .product-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .55s ease;
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--secondary);
-      color: #fff;
-      font-size: .72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      padding: 4px 12px;
-      border-radius: 50px;
-    }
-
-    .product-badge.new    { background: var(--accent); }
-    .product-badge.popular{ background: var(--accent2); }
-
-    .product-info {
-      padding: 18px 20px 22px;
-    }
-
-    .product-category {
-      font-size: .75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--primary-light);
-      margin-bottom: 6px;
-    }
-
-    .product-name {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    .product-age {
-      margin-top: 10px;
-      display: flex; align-items: center; gap: 6px;
-      font-size: .8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .product-age-badge {
-      background: rgba(79,70,229,.08);
-      color: var(--primary);
-      padding: 3px 10px;
-      border-radius: 50px;
-      font-size: .78rem;
-      font-weight: 800;
-    }
-
-    /* ─── About Section ─────────────────────────────────────── */
-    #about {
-      padding: 100px 0;
-      background: linear-gradient(160deg, #EEF2FF 0%, #F0FDF4 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #about .blob { opacity: .12; }
-    .blob-a1 { width: 440px; height: 440px; background: var(--primary); top: -100px; left: -60px; }
-    .blob-a2 { width: 320px; height: 320px; background: var(--accent); bottom: -60px; right: -40px; }
-
-    .about-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 5vw;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .about-visual { position: relative; }
-
-    .about-img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 14px;
-    }
-
-    .about-img-grid img {
-      width: 100%; border-radius: 20px;
-      object-fit: cover;
-      display: block;
-      box-shadow: var(--shadow-md);
-    }
-
-    .about-img-grid img:nth-child(1) { grid-row: span 2; aspect-ratio: 3/4; }
-    .about-img-grid img:nth-child(2) { aspect-ratio: 4/3; }
-    .about-img-grid img:nth-child(3) { aspect-ratio: 4/3; }
-
-    .about-content {}
-
-    .about-content .section-tag { display: inline-block; }
-
-    .about-content h2 {
-      font-family: 'Baloo 2', cursive;
-      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 22px;
-      color: var(--text);
-    }
-
-    .about-content h2 span { color: var(--primary); }
-
-    .about-content p {
-      color: var(--text-muted);
-      font-size: 1.04rem;
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    .about-pillars {
-      margin-top: 30px;
-      display: flex; flex-direction: column; gap: 14px;
-    }
-
-    .pillar {
-      display: flex; align-items: flex-start; gap: 14px;
-      background: rgba(255,255,255,.75);
-      border-radius: 16px;
-      padding: 14px 18px;
-      backdrop-filter: blur(6px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .pillar-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .pillar-text strong {
-      display: block;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 2px;
-      font-size: .95rem;
-    }
-
-    .pillar-text span {
-      font-size: .87rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* ─── Stats strip ─────────────────────────────────────── */
-    .stats-strip {
-      background: var(--primary);
-      padding: 50px 5vw;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stats-strip::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-    }
-
-    .stats-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      display: flex; flex-wrap: wrap;
-      justify-content: space-around; gap: 28px;
-      text-align: center;
-    }
-
-    .stat-item {}
-
-    .stat-number {
-      font-family: 'Baloo 2', cursive;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: .88rem;
-      font-weight: 700;
-      color: rgba(255,255,255,.75);
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    /* ─── Footer ─────────────────────────────────────────── */
-    footer {
-      background: #111827;
-      padding: 52px 5vw 36px;
-      color: rgba(255,255,255,.55);
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .footer-logo .logo-text { color: #ffffff; }
-    .footer-logo .logo-text span { color: var(--secondary); }
-
-    .footer-links {
-      display: flex; gap: 24px;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,.55);
-      text-decoration: none;
-      font-size: .9rem;
-      font-weight: 600;
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: #fff; }
-
-    .footer-copy {
-      font-size: .85rem;
-      line-height: 1.6;
-      text-align: center;
-      width: 100%;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
-    .footer-copy span { color: var(--secondary); }
-
-    /* ─── Responsive ─────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { order: -1; }
-      .sticker-3 { display: none; }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-img-grid { max-width: 380px; margin: 0 auto; }
-      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    }
-
-    @media (max-width: 480px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      nav a { padding: 6px 10px; font-size: .85rem; }
-      .logo-text { font-size: 1.3rem; }
-      .header-inner { height: 60px; }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <header>
   <div class="header-inner">
-    <a href="#" class="logo">
+
+    <a href="#" class="logo" aria-label="Zakaa Brand — الرئيسية">
       <div class="logo-icon">
-        <img src="images/photo_1_2026-03-21_19-17-39.jpg" alt="logo" class="logo-img">
+        <img src="images/photo_1_2026-03-21_19-17-39.jpg" alt="Zakaa logo" class="logo-img" />
       </div>
       <span class="logo-text">Zakaa<span>brand</span></span>
     </a>
-    <nav>
-      <a href="#" class="nav-home">
-      <img src="images/home-icon.png" alt="الرئيسية">
+
+    <nav aria-label="القائمة الرئيسية">
+      <a href="#" class="nav-home" aria-label="الرئيسية">
+        <img src="images/home-icon.png" alt="الرئيسية" />
       </a>
       <a href="#products">الألعاب</a>
       <a href="#about">من نحن</a>
     </nav>
+
   </div>
 </header>
 
-<!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" aria-label="مقدمة">
+
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <!-- Text Side -->
+
+    <!-- Text -->
     <div class="hero-content">
       <div class="hero-tag">
-        <span class="dot"></span>
+        <span class="dot" aria-hidden="true"></span>
         ألعاب تعليمية
       </div>
+
       <h1>ألعاب ذكية<br>ل<em>أطفال أذكياء</em></h1>
+
       <p>
-حرّك الفضول، وطوّر التفكير النقدي، وأشعل الإبداع من خلال ألعاب مصمّمة بعناية تجعل التعلّم أكثر المغامرات إثارة.
+        حرّك الفضول، وطوّر التفكير النقدي، وأشعل الإبداع من خلال ألعاب مصمّمة
+        بعناية تجعل التعلّم أكثر المغامرات إثارة.
       </p>
+
       <div class="hero-badges">
         <div class="badge"><span class="badge-icon">🧠</span>تنمية المهارات الذهنية</div>
-        <div class="badge"><span class="badge-icon">🎨</span> التفكير الإبداعي</div>
-        <div class="badge"><span class="badge-icon">🏆</span> تعزيز قدرات الأطفال</div>
-        <div class="badge"><span class="badge-icon">⭐</span> بناء مهارات الأطفال الأساسية</div>
+        <div class="badge"><span class="badge-icon">🎨</span>التفكير الإبداعي</div>
+        <div class="badge"><span class="badge-icon">🏆</span>تعزيز قدرات الأطفال</div>
+        <div class="badge"><span class="badge-icon">⭐</span>بناء مهارات الأطفال الأساسية</div>
       </div>
     </div>
 
-    <!-- Visual Side -->
+    <!-- Visual -->
     <div class="hero-visual">
       <div class="hero-img-wrap">
         <img
           src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=700&q=80&auto=format&fit=crop"
-          alt="Children playing educational games"
+          alt="أطفال يلعبون ألعاباً تعليمية"
         />
-        <div class="sticker sticker-1">
+        <div class="sticker sticker-1" aria-hidden="true">
           <span class="sticker-emoji">⭐</span>
           <span class="sticker-label">من عمر ٣ إلى ١٢ سنة</span>
         </div>
-        <div class="sticker sticker-2">
+        <div class="sticker sticker-2" aria-hidden="true">
           <span class="sticker-emoji">🏅</span>
           <span class="sticker-label">مواد آمنة للأطفال</span>
         </div>
-        <div class="sticker sticker-3">
+        <div class="sticker sticker-3" aria-hidden="true">
           <span class="sticker-emoji">🌍</span>
           <span class="sticker-label">مواد صديقة للبيئة</span>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
 
-<!-- ═══════════════════════ PRODUCTS ═══════════════════════ -->
-<section id="products">
+<!-- ═══════════════════════════ PRODUCTS ════════════════════════════ -->
+<section id="products" aria-label="المنتجات">
   <div class="section-wrap">
+
     <div class="section-header">
       <div class="section-tag">مجموعتنا</div>
-      <h2 class="section-title">اكتشف <span> ألعابنا </span></h2>
-      <p class="section-sub">Carefully designed to challenge young minds, encourage teamwork, and make every playtime a learning moment.</p>
+      <h2 class="section-title">اكتشف <span>ألعابنا</span></h2>
+      <p class="section-sub">
+        مصمَّمة بعناية لتحفيز العقول الصغيرة وتشجيع العمل الجماعي،
+        وتحويل كل لحظة لعب إلى فرصة تعلّم حقيقية.
+      </p>
     </div>
 
-    <div class="products-grid">
+    <!--
+      Products are injected here dynamically by app.js
+      based on the PRODUCTS array in config.js.
+      To add a new product, edit config.js only.
+    -->
+    <div class="products-grid" id="products-grid" aria-label="قائمة المنتجات">
+    </div>
 
-      <!-- 1 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-51-41.jpg">
-          <span class="product-badge new">New</span>
-        </div>
-
-        <div class="product-info">
-          <div class="product-category">Logic & Puzzles</div>
-          <div class="product-name">Puzzle Pyramid</div>
-          <div class="product-age">
-            <span class="product-age-badge">Ages 4+</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-51-46.jpg" />
-          <span class="product-badge popular">Popular</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Visual Learning</div>
-          <div class="product-name">Color & Shape Match</div>
-          <div class="product-age"><span class="product-age-badge">Ages 3+</span></div>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-51-48.jpg" alt="Memory Tower" />
-        </div>
-        <div class="product-info">
-          <div class="product-category">Memory & Focus</div>
-          <div class="product-name">Memory Tower</div>
-          <div class="product-age"><span class="product-age-badge">Ages 5+</span></div>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-51-41.jpg" alt="Number Quest" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Math & Numbers</div>
-          <div class="product-name">Number Quest</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-51-51.jpg" alt="Story Cubes" />
-          <span class="product-badge popular">Popular</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Language & Creativity</div>
-          <div class="product-name">Story Cubes</div>
-          <div class="product-age"><span class="product-age-badge">Ages 5+</span></div>
-        </div>
-      </div>
-
-      <!-- 6 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-10.jpg" alt="Science Lab Kit" />
-        </div>
-        <div class="product-info">
-          <div class="product-category">Science & Discovery</div>
-          <div class="product-name">Science Lab Kit</div>
-          <div class="product-age"><span class="product-age-badge">Ages 7+</span></div>
-        </div>
-      </div>
-
-      <!-- 7 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-13.jpg" alt="Balance & Build" />
-        </div>
-        <div class="product-info">
-          <div class="product-category">Motor Skills</div>
-          <div class="product-name">Balance & Build</div>
-          <div class="product-age"><span class="product-age-badge">Ages 3+</span></div>
-        </div>
-      </div>
-
-      <!-- 8 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-45.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 9 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-49.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 10 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-53.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 11 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-52-58.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 12 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-03.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 13 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-08.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 14 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-12.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 15 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-16.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 16 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-20.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 17 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-25.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 18 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-29.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 19 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-33.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 20 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-37.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 21 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-41.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 22 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-51.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-      <!-- 23 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="images/photo_2026-03-07_17-53-55.jpg" alt="World Explorer Map" />
-          <span class="product-badge new">New</span>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Geography & Culture</div>
-          <div class="product-name">World Explorer Map</div>
-          <div class="product-age"><span class="product-age-badge">Ages 6+</span></div>
-        </div>
-      </div>
-
-    </div><!-- /products-grid -->
   </div>
 </section>
 
 
-<!-- ═══════════════════════ STATS ═══════════════════════ -->
-<div class="stats-strip">
+<!-- ═══════════════════════════ STATS ════════════════════════════════ -->
+<div class="stats-strip" aria-label="إحصائيات">
   <div class="stats-inner">
     <div class="stat-item">
       <span class="stat-number">20+</span>
@@ -1015,10 +134,6 @@
       <span class="stat-number">200+</span>
       <span class="stat-label">Happy Kids</span>
     </div>
-    <!-- <div class="stat-item">
-      <span class="stat-number">18</span>
-      <span class="stat-label">Award Wins</span>
-    </div> -->
     <div class="stat-item">
       <span class="stat-number">4+</span>
       <span class="stat-label">Countries</span>
@@ -1027,90 +142,108 @@
 </div>
 
 
-<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
-<section id="about">
-  <div class="blob blob blob-a1"></div>
-  <div class="blob blob blob-a2"></div>
+<!-- ═══════════════════════════ ABOUT ════════════════════════════════ -->
+<section id="about" aria-label="من نحن">
+
+  <div class="blob blob-a1" aria-hidden="true"></div>
+  <div class="blob blob-a2" aria-hidden="true"></div>
 
   <div class="about-inner">
+
     <!-- Images -->
     <div class="about-visual">
       <div class="about-img-grid">
         <img
           src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=500&q=80&auto=format&fit=crop"
-          alt="Kids learning together"
+          alt="أطفال يتعلمون معاً"
         />
         <img
           src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=500&q=80&auto=format&fit=crop"
-          alt="Educational game pieces"
+          alt="قطع لعبة تعليمية"
         />
         <img
           src="https://images.unsplash.com/photo-1599687351724-dfa3c4ff81b1?w=500&q=80&auto=format&fit=crop"
-          alt="Child playing puzzle"
+          alt="طفل يحل أحجية"
         />
       </div>
     </div>
 
     <!-- Content -->
     <div class="about-content">
-      <div class="section-tag">Our Story</div>
-      <h2>Where <span>Play</span> Meets Purpose</h2>
+      <div class="section-tag">قصتنا</div>
+      <h2>حيث يلتقي <span>اللعب</span> بالهدف</h2>
+
       <p>
-        At Zakaa, we believe every child deserves games that do more than just entertain. Founded by a team of educators and designers, we craft experiences that nurture the whole child.
+        في زكاء، نؤمن بأن كل طفل يستحق ألعاباً لا تقتصر على الترفيه فحسب.
+        أسّسنا الشركة فريق من المعلمين والمصممين المتخصصين، لنصنع تجارب
+        تُنمّي الطفل في جميع جوانبه.
       </p>
       <p>
-        Each game in our collection is designed alongside child development experts to ensure it builds essential cognitive skills — while still being wonderfully, irresistibly fun.
+        كل لعبة في مجموعتنا مصمَّمة بالتعاون مع خبراء في تطوير الطفل،
+        لضمان بناء المهارات المعرفية الأساسية — مع الحفاظ على المتعة الخالصة
+        التي لا يقاومها الأطفال.
       </p>
 
       <div class="about-pillars">
         <div class="pillar">
           <div class="pillar-icon">🧠</div>
           <div class="pillar-text">
-            <strong>Brain Development</strong>
-            <span>Games that strengthen memory, logic, and problem-solving through play.</span>
+            <strong>تطوير الدماغ</strong>
+            <span>ألعاب تُعزّز الذاكرة والمنطق وحل المشكلات من خلال اللعب.</span>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🎨</div>
           <div class="pillar-text">
-            <strong>Creative Exploration</strong>
-            <span>Open-ended play that lets imaginations run wild and ideas bloom.</span>
+            <strong>استكشاف إبداعي</strong>
+            <span>لعب مفتوح يُطلق العنان للخيال ويزرع الأفكار.</span>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🌱</div>
           <div class="pillar-text">
-            <strong>Sustainable & Safe</strong>
-            <span>Eco-friendly materials, rigorously tested for safety at every age.</span>
+            <strong>مستدام وآمن</strong>
+            <span>مواد صديقة للبيئة، مختبَرة بصرامة لضمان السلامة في كل مرحلة عمرية.</span>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
 
-<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer>
   <div class="footer-inner">
-    <a href="#" class="logo footer-logo" style="text-decoration:none;">
+    <a href="#" class="logo footer-logo" aria-label="Zakaa Brand">
       <div class="logo-icon">🧩</div>
       <span class="logo-text">Zakaa<span>brand</span></span>
     </a>
 
-    <div class="footer-links">
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-    </div>
+    <nav class="footer-links" aria-label="روابط التذييل">
+      <a href="#">الرئيسية</a>
+      <a href="#products">المنتجات</a>
+      <a href="#about">من نحن</a>
+    </nav>
   </div>
 
   <div class="footer-inner">
     <p class="footer-copy">
-      © 2025 <span>Zakaa brand</span>. All rights reserved. — Crafted with ❤️ for curious kids everywhere.
+      © 2025 <span>Zakaa brand</span>. جميع الحقوق محفوظة. — صُنع بـ ❤️ للأطفال الفضوليين في كل مكان.
     </p>
   </div>
 </footer>
+
+
+<!-- ─── Scripts ────────────────────────────────────────────────── -->
+<!--
+  Load order matters:
+  1. config.js  — defines SITE_CONFIG and PRODUCTS (global variables)
+  2. app.js     — reads those globals and builds the UI
+-->
+<script src="config.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
