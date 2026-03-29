@@ -268,7 +268,7 @@ nav a:hover {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   object-fit: cover;
-  aspect-ratio: 4 / 3.4;
+  /* aspect-ratio: 4 / 3.4; */
 }
 
 /* Floating stickers */
@@ -315,7 +315,7 @@ nav a:hover {
 
 .section-tag {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
