@@ -7,7 +7,7 @@
 // Update this value whenever the USD → EGP exchange rate changes.
 // All EGP prices on the site are calculated from this rate automatically
 // IF a product's "priceEGP" is set to null (auto-calculate mode).
-const DOLLAR_RATE = 53; // 1 USD = 50 EGP  ← change this as needed
+const DOLLAR_RATE = 53; // 1 USD = 53 EGP  ← change this as needed
 
 // ─── Site Settings ───────────────────────────────────────────
 const SITE_CONFIG = {
@@ -16,6 +16,10 @@ const SITE_CONFIG = {
     usdSymbol: "$",
     egpSymbol: "ج.م",
     dollarRate: DOLLAR_RATE, // referenced from above
+  },
+  shipping: {
+    kuwaitEGP: 650,
+    kuwaitKWD: 2
   },
   whatsappNumber: "+20 1200653165", // used for order/inquiry links
   showOutOfStock: false,           // hide products with inStock: false

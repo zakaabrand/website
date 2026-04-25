@@ -226,5 +226,13 @@
     renderProducts();
     initDescriptionToggles();
     initLightbox();
+
+    // Render shipping info
+    if (SITE_CONFIG.shipping) {
+      const egpEl = document.getElementById("shipping-egp");
+      const kwdEl = document.getElementById("shipping-kwd");
+      if (egpEl) egpEl.textContent = SITE_CONFIG.shipping.kuwaitEGP;
+      if (kwdEl) kwdEl.textContent = SITE_CONFIG.shipping.kuwaitKWD;
+    }
   });
 })();
