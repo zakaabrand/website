@@ -17,7 +17,7 @@ const SITE_CONFIG = {
     egpSymbol: "ج.م",
     dollarRate: DOLLAR_RATE, // referenced from above
   },
-  whatsappNumber: "+20 12 00653165", // used for order/inquiry links
+  whatsappNumber: "+20 1200653165", // used for order/inquiry links
   showOutOfStock: false,           // hide products with inStock: false
 };
 
