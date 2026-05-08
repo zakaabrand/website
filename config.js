@@ -192,7 +192,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -208,7 +208,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -224,7 +224,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -240,7 +240,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -256,7 +256,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -272,7 +272,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–8 players",
+    players: "1 player",
     playTime: "45–90 min",
   },
   {
@@ -288,7 +288,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–4 players",
+    players: "1 player",
     playTime: "15–30 min",
   },
   {
@@ -304,7 +304,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "1–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -320,7 +320,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "1–4 players",
+    players: "1 player",
     playTime: "20–40 min",
   },
   {
@@ -336,7 +336,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–5 players",
+    players: "1 player",
     playTime: "30–50 min",
   },
   {
@@ -352,7 +352,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–8 players",
+    players: "1 player",
     playTime: "20–40 min",
   },
   {
@@ -368,7 +368,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "30–60 min",
   },
   {
@@ -384,7 +384,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "4–20 players",
+    players: "1 player",
     playTime: "45–90 min",
   },
   {
@@ -400,7 +400,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2 players",
+    players: "1 player",
     playTime: "5–15 min",
   },
   {
@@ -416,7 +416,7 @@ const PRODUCTS = [
     badge: "new",
     inStock: true,
     skills: [],
-    players: "2–6 players",
+    players: "1 player",
     playTime: "45–75 min",
   },
 ];
