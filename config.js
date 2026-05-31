@@ -63,18 +63,18 @@ const PRODUCTS = [
     ageLabel: " ٤+ سنوات",
     badge: "new",
     inStock: true,
-    skills: ["تطوير المنطق", "حل المشكلات", "تنمية المهارات الحركية الدقيقة"],
+    skills: [" التعرف علي الاشكال الهندسية (مربع - دائرة - مثلث )", " التعرف علي الالوان (احمر - اصفر - اخضر )", "التعرف علي الاحجام (كبير - وسط - صغير)","زيادة التركيز و الانتباه","زيادة التآزر البصري الحركي"],
     players: "١ لاعب",
     playTime: "١٥–٣٠ دقيقة",
   },
   {
     id: "product-002",
-    name: "",
+    name: "لعبة التكوين",
     category: "",
     imagePath: "images/photo_3_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: "اهداف اللعبة:\n• زيادة التركيز والانتباه والصبر لجميع الاعمار\n• تنمية مهارة التقليد (تقليد الاشكال المتاحة في الشيت)\n• تنمية مهارة التنسيق بين العين واليد وتناسق الشكل العام\n• يتعرف الطفل من خلالها على الاشكال والالوان\n• يطور القدرة على التفكير المنطقي",
     ageMin: 3,
     ageLabel: "3+ سنوات",
     badge: "popular",
@@ -85,12 +85,17 @@ const PRODUCTS = [
   },
   {
     id: "product-003",
-    name: "بازل تعليم الأرقام",
+    name: "بازل الاعداد",
     category: "",
     imagePath: "images/photo_5_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 125,
-    description: "",
+    description: `اهداف اللعبة : 
+- تعليم الطفل الاعداد عن طريق اللعب ( خاصة مع اطفال صعوبات التعلم )
+- التعرف علي الالوان 
+- زيادة التركيز و الانتباه 
+- التنسيق بين حركة العين و اليد
+- زيادة التآزر البصري الحركي`,
     ageMin: 5,
     ageLabel: "Ages 5+",
     badge: null,
@@ -106,7 +111,11 @@ const PRODUCTS = [
     imagePath: "images/photo_6_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 130,
-    description: "",
+    description: `اهداف اللعبة : 
+- التعرف علي الالوان 
+- زيادة التركيز و الانتباه 
+- زيادة التآزر البصري الحركي 
+- تقليل الاندفاعية`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -122,7 +131,13 @@ const PRODUCTS = [
     imagePath: "images/photo_7_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 60,
-    description: "",
+    description: `الاهداف :
+•  تنمية مهارة المطابقة
+•  الحد من الاندفاعية
+•  التعرف علي الالوان 
+•  زيادة التركيز و الانتباه 
+-زيادة التآزر البصري الحركي
+`,
     ageMin: 5,
     ageLabel: "Ages 5+",
     badge: "popular",
@@ -133,12 +148,17 @@ const PRODUCTS = [
   },
   {
     id: "product-006",
-    name: "",
+    name: "مربعات التركيز و الذاكرة",
     category: "",
     imagePath: "images/photo_8_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 145,
-    description: "",
+    description: `-اهداف اللعبة : 
+-زيادة التركيز و الانتباه 
+•  زيادة التآزر البصري الحركي و التنسيق بين العين و اليد
+-تنمي مهارة المطابقة و التقليد  
+•  تقوية الذاكرة البصرية
+- الحد من الاندفاعية و فرط الحركة`,
     ageMin: 7,
     ageLabel: "Ages 7+",
     badge: null,
@@ -170,7 +190,14 @@ const PRODUCTS = [
     imagePath: "images/photo_10_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 85,
-    description: "",
+    description: `
+الاهداف : 
+١- مطابقة القطعة بالشكل المماثل لها
+٢- زيادة التركيز و الانتباه
+٣- التعرف علي الالوان
+٤- زيادة التآزر البصري الحركي
+٥- التنسيق بين حركة العين و اليد
+٦- مطابقة القطعة بالشكل`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -186,7 +213,11 @@ const PRODUCTS = [
     imagePath: "images/photo_11_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 90,
-    description: "",
+    description: `الاهداف : 
+١- تعليم الطفل الارقام عن طريق اللعب
+٢- التدريب علي حل المسائل الحسابية
+٣- زيادة التركيز و الانتباه
+٤- زيادة التآزر البصري`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -229,12 +260,20 @@ const PRODUCTS = [
   },
   {
     id: "product-012",
-    name: "لعبة انصاف الدوائر",
+    name: "بازل التطابق “ انصاف الدوائر",
     category: "",
     imagePath: "images/photo_14_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 130,
-    description: "",
+    description: `اهدافها
+- تنمية مهارات الطفل البصرية 
+- تنمية مهاراة التطابق
+- زيادة التركيز و الانتباه
+- تقليل الاندفاعية عند الاطفال
+- التميز بين الالوان المتداخلة
+- التنسيق بين حركة اليد و العين
+- زيادة التآزر البصري الحركي 
+-بديل للالعاب الالكترونية`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -245,12 +284,21 @@ const PRODUCTS = [
   },
   {
     id: "product-013",
-    name: "",
-    category: "",
+    name: "لعبة نسخ النمط",
+    category: " ",
     imagePath: "images/photo_15_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 130,
-    description: "",
+    description: `
+- الاهداف
+- استكشاف عالم التعلم من خلال اللعب مع مجموعة "انسخ النمط"!
+- تميز الانماط و الالوان
+- تنمية المهارات الحركية الدقيقة
+- التنسيق بين حركة اليد و العين
+- تقليل الاندافاعية
+- مثالي لممارسة تنفيذ الاوامر
+- وتعزيز التطور المعرفي
+- وتطوير مهارات حل المشكلات`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -261,12 +309,18 @@ const PRODUCTS = [
   },
   {
     id: "product-014",
-    name: "لعبة المنظار ‌‌‌‌‌2",
+    name: "لعبة : ابحث عن النمط",
     category: "",
     imagePath: "images/photo_16_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `
+الاهداف :
+- زيادة التركيز و الانتباه
+- يطور مهاراة التنسيق بين حركة العين و اليد
+- يعزز الشكل و التعرف علي الالوان
+- يحسن من تقليل الاندفاعية عند الطفل
+- بديل للالعاب الالكترونية`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -341,12 +395,18 @@ const PRODUCTS = [
   },
   {
     id: "product-019",
-    name: "",
+    name: "المربعات المتداخلة",
     category: "",
     imagePath: "images/photo_21_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `اهداف النشاط
+- لتنمية مهارة التقليد
+- زيادة التركيز و الانتباه
+- التنسيق بين حركة اليد و العين 
+- زيادة التآزر البصري الحركي 
+- تقليل الاندفاعية
+- تنمية قدرات الطفل علي الابداع`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -411,6 +471,50 @@ const PRODUCTS = [
     priceUSD: null,
     priceEGP: 150,
     description: "",
+    ageMin: 6,
+    ageLabel: "Ages 6+",
+    badge: "new",
+    inStock: true,
+    skills: [],
+    players: "1 player",
+    playTime: "45–75 min",
+  },
+  {
+    id: "product-024",
+    name: "لعبة الاسهم",
+    category: "",
+    imagePath: "images/photo_4_2026-03-21_16-00-02.jpg",
+    priceUSD: null,
+    priceEGP: 150,
+    description: `اهداف اللعبة : 
+•  التعرف علي الاتجاهات
+•  التعرف علي الالوان ( احمر-اصفر-اخضر-ازرق )
+•  زيادة التركيز و الانتباه 
+( بحيث ان الطفل يكون مركز في ان كل اتجاه يمين لونه احمر و كل اتجاه شمال لونه اخضر و هكذا)
+•  زيادة التآزر البصري الحركي`,
+    ageMin: 6,
+    ageLabel: "Ages 6+",
+    badge: "new",
+    inStock: true,
+    skills: [],
+    players: "1 player",
+    playTime: "45–75 min",
+  },
+  {
+    id: "product-025",
+    name: "لعبة الذاكرة البصرية",
+    category: "",
+    imagePath: "images/705245620_2046815676186538_7275321992089774575_n.jpg",
+    priceUSD: null,
+    priceEGP: 150,
+    description: `
+-هتزود التركيز و الانتباه 
+-تقوية الذاكرة البصرية
+-هتزود التآزر البصري الحركي
+-تنمية مهارات التنسيق بين العين و اليد و تناسق الشكل العام
+-هتقلل من الاندفاعية
+-بديل للالعاب الالكترونية
+-يتم التعرف من خلالها علي الاشكال و الالوان`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
