@@ -157,10 +157,25 @@ nav a:hover {
   color: #fff;
 }
 
-.nav-home img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
+.nav-home svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition-fast);
+}
+
+.nav-home svg circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.nav-home:hover svg {
+  transform: scale(1.15);
 }
 
 /* ══════════════════════════════════════════════════════════════

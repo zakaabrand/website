@@ -18,7 +18,7 @@ const SITE_CONFIG = {
     dollarRate: DOLLAR_RATE, // referenced from above
   },
   shipping: {
-    kuwaitEGP: 650,
+    kuwaitEGP: 30,
     kuwaitKWD: 2
   },
   whatsappNumber: "+20 1200653165", // used for order/inquiry links
@@ -63,7 +63,7 @@ const PRODUCTS = [
     ageLabel: " ٤+ سنوات",
     badge: "new",
     inStock: true,
-    skills: [" التعرف علي الاشكال الهندسية (مربع - دائرة - مثلث )", " التعرف علي الالوان (احمر - اصفر - اخضر )", "التعرف علي الاحجام (كبير - وسط - صغير)","زيادة التركيز و الانتباه","زيادة التآزر البصري الحركي"],
+    skills: [" التعرف علي الاشكال الهندسية (مربع - دائرة - مثلث )", " التعرف علي الالوان (احمر - اصفر - اخضر )", "التعرف علي الاحجام (كبير - وسط - صغير)", "زيادة التركيز و الانتباه", "زيادة التآزر البصري الحركي"],
     players: "١ لاعب",
     playTime: "١٥–٣٠ دقيقة",
   },
@@ -169,22 +169,6 @@ const PRODUCTS = [
   },
   {
     id: "product-007",
-    name: "",
-    category: "",
-    imagePath: "images/photo_9_2026-03-21_16-00-02.jpg",
-    priceUSD: null,
-    priceEGP: 100,
-    description: "",
-    ageMin: 3,
-    ageLabel: "Ages 3+",
-    badge: null,
-    inStock: true,
-    skills: ["Balance", "Physics Intuition"],
-    players: "1–4 players",
-    playTime: "15–25 min",
-  },
-  {
-    id: "product-008",
     name: "بورد التطابق",
     category: "",
     imagePath: "images/photo_10_2026-03-21_16-00-02.jpg",
@@ -207,7 +191,7 @@ const PRODUCTS = [
     playTime: "15–30 min",
   },
   {
-    id: "product-009",
+    id: "product-008",
     name: "بازل الاعداد والعمليات الحسابية",
     category: "",
     imagePath: "images/photo_11_2026-03-21_16-00-02.jpg",
@@ -227,13 +211,35 @@ const PRODUCTS = [
     playTime: "30–60 min",
   },
   {
-    id: "product-010",
-    name: "بازل الخضروات",
+    id: "product-009",
+    name: "بازل الخضراوات",
     category: "",
     imagePath: "images/photo_12_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 80,
-    description: "",
+    description: `- تسمية وتصنيف الخضراوات
+- ⁠تمييز الألوان المتنوعة
+- ⁠مطابقة الأشكال والظلال
+- إثراء الحصيلة اللغوية`,
+    ageMin: 6,
+    ageLabel: "Ages 6+",
+    badge: "new",
+    inStock: true,
+    skills: [],
+    players: "1 player",
+    playTime: "30–60 min",
+  },
+  {
+    id: "product-010",
+    name: "بازل الفواكه",
+    category: "",
+    imagePath: "images/photo_13_2026-03-21_16-00-02.jpg",
+    priceUSD: null,
+    priceEGP: 80,
+    description: `- تسمية وتصنيف الفواكه
+- ⁠تمييز الألوان المتنوعة
+- ⁠مطابقة الأشكال والظلال
+- إثراء الحصيلة اللغوية`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -244,22 +250,6 @@ const PRODUCTS = [
   },
   {
     id: "product-011",
-    name: "بازل الفواكه",
-    category: "",
-    imagePath: "images/photo_13_2026-03-21_16-00-02.jpg",
-    priceUSD: null,
-    priceEGP: 80,
-    description: "",
-    ageMin: 6,
-    ageLabel: "Ages 6+",
-    badge: "new",
-    inStock: true,
-    skills: [],
-    players: "1 player",
-    playTime: "30–60 min",
-  },
-  {
-    id: "product-012",
     name: "بازل التطابق “ انصاف الدوائر",
     category: "",
     imagePath: "images/photo_14_2026-03-21_16-00-02.jpg",
@@ -283,7 +273,7 @@ const PRODUCTS = [
     playTime: "30–60 min",
   },
   {
-    id: "product-013",
+    id: "product-012",
     name: "لعبة نسخ النمط",
     category: " ",
     imagePath: "images/photo_15_2026-03-21_16-00-02.jpg",
@@ -308,7 +298,7 @@ const PRODUCTS = [
     playTime: "30–60 min",
   },
   {
-    id: "product-014",
+    id: "product-013",
     name: "لعبة : ابحث عن النمط",
     category: "",
     imagePath: "images/photo_16_2026-03-21_16-00-02.jpg",
@@ -330,13 +320,16 @@ const PRODUCTS = [
     playTime: "45–90 min",
   },
   {
-    id: "product-015",
-    name: "",
+    id: "product-014",
+    name: "المنظار ١",
     category: "",
     imagePath: "images/photo_17_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- المسح البصري الحاد: تدريب العين على البحث المنظم وسط مجموعة هائلة ومزدحمة من الأشكال والرموز الملونة.
+- التركيز والانتباه للتفاصيل: التدقيق في نوع الأشكال الأربعة المجاورة لبعضها البعض
+- التعرف على الأشكال الهندسية المتنوعة
+- ⁠⁠⁠التآزر البصري الحركي: التحكم في حركة اليد بدقة أثناء تحريك الإطار الخشبي الأحمر`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -346,13 +339,18 @@ const PRODUCTS = [
     playTime: "15–30 min",
   },
   {
-    id: "product-016",
-    name: "",
+    id: "product-015",
+    name: "بورد التركيز",
     category: "",
     imagePath: "images/photo_18_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- المرونة الذهنية والترجمة المنطقية
+- ⁠إدراك الاتجاهات والزوايا
+- ⁠الإدراك البصري المكاني المعقد
+- ⁠التركيز البصري المزدوج
+- ⁠التآزر البصري الحركي: دقة ضبط حواف المربعات الخشبية بجانب بعضها لتكوين لوحة هندسية
+`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -362,13 +360,16 @@ const PRODUCTS = [
     playTime: "30–60 min",
   },
   {
-    id: "product-017",
-    name: "",
+    id: "product-016",
+    name: "بورد الايس كريم",
     category: "",
     imagePath: "images/photo_19_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- التحكم الحركي الدقيق وقوة الأصابع
+- ⁠التركيز والانتباه البصري: التدقيق في تتابع الألوان
+- الإدراك المكاني (فوق وتحت): استيعاب الترتيب المكاني للأشياء ومعرفة الطبقة التي تأتي أولاً والتي تليها بناءً على نموذج الكارت.
+- ⁠التعرف علي الالوان و زيادة التركيز و الانتباه`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -378,23 +379,26 @@ const PRODUCTS = [
     playTime: "20–40 min",
   },
   {
-    id: "product-018",
-    name: "",
+    id: "product-017",
+    name: "لوحة الارقام الذكية",
     category: "",
     imagePath: "images/photo_20_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- العد والإحصاء: تنمية مهارة عد العناصر المتشابهة داخل الصف الواحد
+- ⁠الكتابة والتحكم الحركي الدقيق: تقوية عضلات اليد والأصابع عبر استخدام القلم للكتابة
+- ⁠المسح البصري والتركيز: تدريب العين على الانتقال المنظم من اليمين إلى اليسار (أو العكس)
+- ⁠مفهوم التدوين والبيانات: إدراك الطفل لكيفية تحويل الأشكال البصرية (الألوان) إلى رموز رقمية`,
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [],
     players: "1 player",
     playTime: "30–50 min",
   },
   {
-    id: "product-019",
+    id: "product-018",
     name: "المربعات المتداخلة",
     category: "",
     imagePath: "images/photo_21_2026-03-21_16-00-02.jpg",
@@ -416,29 +420,37 @@ const PRODUCTS = [
     playTime: "20–40 min",
   },
   {
-    id: "product-020",
-    name: "",
+    id: "product-019",
+    name: "الحلقات المتداخلة",
     category: "",
     imagePath: "images/photo_22_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `
+    - إدراك العلاقات الحجمية: تمييز الأحجام المختلفة (كبير، متوسط، صغير) 
+- ⁠التركيز والانتباه للتفاصيل: التدقيق في ترتيب الألوان من الداخل إلى الخارج (أو العكس) 
+- المرونة الذهنية وحل المشكلات: اكتشاف الخطأ عند وضع حلقة بحجم غير مناسب
+- ⁠⁠التفكير التحليلي: تفكيك النمط البصري الموجود في الكارت`,
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [],
     players: "1 player",
     playTime: "30–60 min",
   },
   {
-    id: "product-021",
-    name: "",
+    id: "product-020",
+    name: "شبكة الالوان",
     category: "",
     imagePath: "images/photo_23_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- تقوية القدرة على التمييز بين الألوان المتشابهة والمختلفة وتحديد الزوايا الصحيحة.
+- ⁠زيادة التركيز والانتباه للتفاصيل الصغيرة والدقيقة
+- ⁠تساعد الأطفال الذين يعانون من تشتت الانتباه على الجلوس لفترات أطول لإتمام اللوحة بالكامل.
+- ⁠تقوية عضلات اليد والأصابع والتحكم
+- ⁠التنسيق بين ما تراه العين وحركة اليد أثناء التقاط القطع ووضعها في مكانها المناسب.`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
@@ -448,39 +460,46 @@ const PRODUCTS = [
     playTime: "45–90 min",
   },
   {
-    id: "product-022",
-    name: "",
+    id: "product-021",
+    name: "مستكشف الالوان الذكي",
     category: "",
     imagePath: "images/photo_24_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- الإدراك البصري المكاني: فهم كيفية مطابقة الشكل المفرغ فوق لوحة الألوان
+- ⁠المرونة الذهنية وحل المشكلات: إدراك الطفل لإمكانية تدوير نفس الشكل المفرغ في اتجاهات مختلفة للحصول على الترتيب اللوني الصحيح.
+- ⁠التعرف على الأشكال الهندسية: تمييز الأشكال المختلفة 
+- التآزر البصري الحركي: دقة حركة اليد والأصابع أثناء البحث عن النمط`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
     inStock: true,
     skills: [],
     players: "1 player",
-    playTime: "5–15 min",
+    playTime: "25–40 min",
   },
   {
-    id: "product-023",
-    name: "",
+    id: "product-022",
+    name: "تطابق بيض الالوان ",
     category: "",
     imagePath: "images/photo_25_2026-03-21_16-00-02.jpg",
     priceUSD: null,
     priceEGP: 150,
-    description: "",
+    description: `- الإدراك البصري المكاني
+- ⁠الربط والمطابقة الثنائية
+- ⁠حل المشكلات بالخطأ والصواب: تجربة الطفل لتركيب أجزاء مختلفة واكتشاف عدم تطابق الخطوط
+- ⁠الصبر والاستقلالية: تشجيع الطفل على الاعتماد على نفسه لفرز كومة الأجزاء العشوائية وتجميع البيض بنجاح.
+`,
     ageMin: 6,
     ageLabel: "Ages 6+",
     badge: "new",
     inStock: true,
     skills: [],
     players: "1 player",
-    playTime: "45–75 min",
+    playTime: "30-40 min",
   },
   {
-    id: "product-024",
+    id: "product-023",
     name: "لعبة الاسهم",
     category: "",
     imagePath: "images/photo_4_2026-03-21_16-00-02.jpg",
@@ -494,25 +513,25 @@ const PRODUCTS = [
 •  زيادة التآزر البصري الحركي`,
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "high_recommended",
     inStock: true,
     skills: [],
     players: "1 player",
     playTime: "45–75 min",
   },
   {
-    id: "product-025",
+    id: "product-024",
     name: "لعبة الذاكرة البصرية",
     category: "",
     imagePath: "images/705245620_2046815676186538_7275321992089774575_n.jpg",
     priceUSD: null,
     priceEGP: 150,
     description: `
--هتزود التركيز و الانتباه 
+-زيادة التركيز و الانتباه 
 -تقوية الذاكرة البصرية
--هتزود التآزر البصري الحركي
+-زيادة التآزر البصري الحركي
 -تنمية مهارات التنسيق بين العين و اليد و تناسق الشكل العام
--هتقلل من الاندفاعية
+-تقليل الاندفاعية
 -بديل للالعاب الالكترونية
 -يتم التعرف من خلالها علي الاشكال و الالوان`,
     ageMin: 6,
