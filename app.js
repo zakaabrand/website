@@ -234,5 +234,13 @@
       if (egpEl) egpEl.textContent = SITE_CONFIG.shipping.kuwaitEGP;
       if (kwdEl) kwdEl.textContent = SITE_CONFIG.shipping.kuwaitKWD;
     }
+
+    // Initialize WhatsApp widget link
+    const whatsappWidget = document.getElementById("whatsapp-widget");
+    if (whatsappWidget && SITE_CONFIG.whatsappNumber) {
+      const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
+      const defaultText = encodeURIComponent("مرحباً زكاء، أود الاستفسار عن الألعاب المتوفرة.");
+      whatsappWidget.href = `https://wa.me/${cleanNumber}?text=${defaultText}`;
+    }
   });
 })();
