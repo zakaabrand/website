@@ -221,6 +221,59 @@
     });
   }
 
+  // ─── Exchange Rate Sync ─────────────────────────────────────
+  async function syncExchangeRate() {
+    const cacheHours = SITE_CONFIG.currency.cacheDurationHours || 10;
+    const CACHE_DURATION = cacheHours * 60 * 60 * 1000; // in milliseconds
+    const now = Date.now();
+    
+    let needsUpdate = true;
+    try {
+      const cachedTime = localStorage.getItem("zakaa_dollar_rate_time");
+      if (cachedTime) {
+        const lastSync = parseInt(cachedTime, 10);
+        if (now - lastSync < CACHE_DURATION) {
+          needsUpdate = false;
+        }
+      }
+    } catch (e) {
+      // LocalStorage access issues
+    }
+
+    if (!needsUpdate) return;
+
+    try {
+      const response = await fetch("https://open.er-api.com/v6/latest/USD");
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      
+      if (data && data.rates && data.rates.EGP) {
+        const newRate = parseFloat(data.rates.EGP);
+        if (!isNaN(newRate) && newRate > 0) {
+          const oldRate = SITE_CONFIG.currency.dollarRate;
+          
+          try {
+            localStorage.setItem("zakaa_dollar_rate", newRate.toString());
+            localStorage.setItem("zakaa_dollar_rate_time", now.toString());
+          } catch (e) {}
+
+          if (newRate !== oldRate) {
+            SITE_CONFIG.currency.dollarRate = newRate;
+            
+            // Re-render product grid to update prices
+            const grid = document.getElementById("products-grid");
+            if (grid) {
+              grid.innerHTML = "";
+              renderProducts();
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch real-time exchange rate:", error);
+    }
+  }
+
   // ─── Init ───────────────────────────────────────────────────
   document.addEventListener("DOMContentLoaded", function () {
     renderProducts();
@@ -242,5 +295,8 @@
       const defaultText = encodeURIComponent("مرحباً زكاء، أود الاستفسار عن الألعاب المتوفرة.");
       whatsappWidget.href = `https://wa.me/${cleanNumber}?text=${defaultText}`;
     }
+
+    // Sync real-time exchange rate in the background
+    syncExchangeRate();
   });
 })();

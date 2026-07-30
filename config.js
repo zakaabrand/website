@@ -4,10 +4,21 @@
 // ═══════════════════════════════════════════════════════════════
 
 // ─── Currency Settings ───────────────────────────────────────
-// Update this value whenever the USD → EGP exchange rate changes.
-// All EGP prices on the site are calculated from this rate automatically
-// IF a product's "priceEGP" is set to null (auto-calculate mode).
-const DOLLAR_RATE = 53; // 1 USD = 53 EGP  ← change this as needed
+// The exchange rate is fetched in real-time and cached in localStorage.
+// This variable loads the cached rate, falling back to 53 if not yet fetched.
+let DOLLAR_RATE = 53;
+
+try {
+  const cachedRate = localStorage.getItem("zakaa_dollar_rate");
+  if (cachedRate) {
+    const rate = parseFloat(cachedRate);
+    if (!isNaN(rate) && rate > 0) {
+      DOLLAR_RATE = rate;
+    }
+  }
+} catch (e) {
+  console.warn("localStorage access blocked or unavailable. Using default dollar rate.", e);
+}
 
 // ─── Site Settings ───────────────────────────────────────────
 const SITE_CONFIG = {
@@ -16,6 +27,7 @@ const SITE_CONFIG = {
     usdSymbol: "$",
     egpSymbol: "ج.م",
     dollarRate: DOLLAR_RATE, // referenced from above
+    cacheDurationHours: 10,  // cache duration for real-time exchange rates (in hours)  (USD → EGP UPDATE)
   },
   shipping: {
     kuwaitEGP: 30,
@@ -61,7 +73,7 @@ const PRODUCTS = [
     description: "بازل ممتع مصمم لتطوير المهارات الحركية الدقيقة لدى الأطفال والتنسيق بين اليد والعين. كل قطعة تأتي في مكان محدد، مما يدفع الأطفال إلى التفكير النقدي ومعالجة المشكلات المكانية أثناء اللعب.",
     ageMin: 4,
     ageLabel: " ٤+ سنوات",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "التعرف على الأشكال الهندسية (مربع - دائرة - مثلث)",
@@ -83,7 +95,7 @@ const PRODUCTS = [
     description: "لعبة ذكية تعتمد على تركيب الأشكال الخشبية الملونة لبناء تصميمات مختلفة وتتبع الأنماط المحددة، مما يطور الصبر والمهارات العقلية بطريقة تفاعلية وممتعة.",
     ageMin: 3,
     ageLabel: "3+ سنوات",
-    badge: "popular",
+    badge: "",
     inStock: true,
     skills: [
       "زيادة التركيز والانتباه والصبر لجميع الأعمار",
@@ -127,7 +139,7 @@ const PRODUCTS = [
     description: "لعبة خشبية فريدة وتفاعلية تتطلب من الطفل استخدام المفاتيح لحل الألغاز وتطوير الدقة الحركية، مما يمنحه شعوراً بالإنجاز ويعزز الهدوء والتركيز لديه.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "التعرف على الألوان وتطابقها",
@@ -148,7 +160,7 @@ const PRODUCTS = [
     description: "كوستر خشبي مصمم بدقة يتحدى الطفل لمطابقة القطع الملونة مع النمط المطلوب، وهو أداة مثالية لتطوير الملاحظة البصرية الدقيقة والتركيز الهادئ.",
     ageMin: 5,
     ageLabel: "Ages 5+",
-    badge: "popular",
+    badge: "",
     inStock: true,
     skills: [
       "تنمية مهارة مطابقة الأنماط",
@@ -192,7 +204,7 @@ const PRODUCTS = [
     description: "لوحة خشبية تفاعلية جذابة تهدف إلى مساعدة الأطفال في مطابقة الأشكال وتحديد الفروقات البصرية واللونية بين القطع، مما يبني أساساً متيناً للملاحظة الذكية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "مطابقة الأشكال والقطع المتماثلة",
@@ -214,7 +226,7 @@ const PRODUCTS = [
     description: "أداة تعليمية حركية ممتعة تبسط مبادئ الرياضيات والعمليات الحسابية البسيطة (مثل الجمع والطرح) من خلال اللعب اللمسي، مما يسهل استيعاب المفاهيم المجردة.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تعلم الأرقام والعد بطريقة ملموسة",
@@ -235,7 +247,7 @@ const PRODUCTS = [
     description: "بازل خشبي تعليمي يعرّف الأطفال الصغار على أنواع الخضروات المختلفة وأشكالها وألوانها، مما يعزز مفرداتهم اللغوية ومهاراتهم المعرفية الأساسية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تسمية وتصنيف الخضراوات المختلفة",
@@ -256,7 +268,7 @@ const PRODUCTS = [
     description: "بازل ملون ومحبب للأطفال يساعدهم على اكتشاف الفواكه اللذيذة وتصنيفها، ويعمل كأداة بصرية ممتعة لربط الأشكال بأسمائها الحقيقية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تسمية وتصنيف أنواع الفواكه",
@@ -277,7 +289,7 @@ const PRODUCTS = [
     description: "بازل مبتكر يعتمد على تكوين الدوائر الكاملة من أنصاف الدوائر الملونة، مما يعلم الأطفال مبدأ الأجزاء والكل ويوفر بديلاً صحياً وتفاعلياً ممتازاً للشاشات الإلكترونية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تنمية مهارات التمييز والمطابقة البصرية",
@@ -300,7 +312,7 @@ const PRODUCTS = [
     description: "افتح لطفلك بوابة الإبداع والمنطق مع لعبة 'نسخ النمط'! من خلال استخدام خرز أو قطع ملونة لإعادة بناء الأشكال المعروضة على البطاقات، يتدرب الطفل على اتباع التعليمات وحل المشكلات الهندسية بنجاح.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تمييز الأنماط والأشكال والترتيب اللوني",
@@ -323,7 +335,7 @@ const PRODUCTS = [
     description: "لعبة بحث سريعة ومثيرة تتطلب من الطفل مطابقة الأنماط البصرية المعروضة على الكروت في أسرع وقت، مما يحفز الاستجابة البصرية السريعة والتفكير الفوري المنظم.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "زيادة قوة التركيز والملاحظة والانتباه",
@@ -345,7 +357,7 @@ const PRODUCTS = [
     description: "لعبة المنظار الممتعة تضع مهارات الملاحظة لدى طفلك تحت المجهر! حيث يتعلم كيفية البحث بذكاء ونظام (مسح بصري) وسط تفاصيل غنية ومليئة بالألوان للعثور على النمط المستهدف.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "المسح البصري الحاد والتنقيب المنظم",
@@ -366,7 +378,7 @@ const PRODUCTS = [
     description: "بورد خشبي متطور مصمم خصيصاً لتحدي مستويات التركيز العالية، ويتطلب من الطفل التفكير ثنائي الأبعاد ومطابقة الزوايا والاتجاهات المعقدة لبناء نمط هندسي دقيق.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تطوير المرونة الذهنية والتفكير المنطقي",
@@ -388,7 +400,7 @@ const PRODUCTS = [
     description: "بورد الأيس كريم اللطيف يدمج متعة التصميم بالتعلم المكاني المعرفي؛ حيث يقوم الطفل بترتيب نكهات المثلجات الملونة فوق بعضها بالترتيب الصحيح المعروض على البطاقات.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "التحكم الحركي الدقيق وتقوية عضلات الأصابع",
@@ -430,7 +442,7 @@ const PRODUCTS = [
     description: "نشاط خشبي رائع يستعين بمربعات متدرجة الأحجام لتعليم الأطفال كيفية بناء وتطابق مجسمات ثلاثية الأبعاد أو أنماط متراكبة، مما يعزز الإبداع البصري لديهم.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "تنمية مهارة التقليد والتطابق للأشكال",
@@ -474,7 +486,7 @@ const PRODUCTS = [
     description: "لوحة شبكية مدهشة وملونة تحث الطفل على ترتيب دبابيس أو قطع الألوان لتكوين أشكال ساحرة، وهي ممتازة لتدريب الأطفال على الجلوس الهادئ وزيادة مدى انتباههم الطويل.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "التمييز اللوني الدقيق وتحديد الزوايا الصحيحة",
@@ -496,7 +508,7 @@ const PRODUCTS = [
     description: "لعبة ذكاء بصرية ممتعة للغاية تتطلب من الطفل تحريك وتدوير إطار مفرغ فوق شبكة من الألوان حتى يتطابق ترتيب الألوان مع النمط المطلوب، مما ينمي الذكاء المكاني والمنطق.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "الإدراك البصري المكاني وتوجيه الأشكال",
@@ -517,7 +529,7 @@ const PRODUCTS = [
     description: "بيض الألوان التعليمي هي لعبة مطابقة ثنائية ظريفة وتفاعلية؛ حيث يبحث الطفل عن النصفين المتطابقين اللذين يكملان البيضة باللون والشكل الهندسي الصحيح، ليتعلم الصبر والاستقلالية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "الإدراك البصري المكاني وتمييز المنحنيات",
@@ -559,7 +571,7 @@ const PRODUCTS = [
     description: "تحدي الذاكرة البصرية الرائع! لعبة ممتعة تنمي مهارات التذكر القريب وتنسيق الألوان وتحديد مواقع الأشكال الخشبية بدقة، مما يساعد طفلك على تقليل الاندفاعية ويوفر له بديلاً رائعاً ومسلياً عن الألعاب الإلكترونية.",
     ageMin: 6,
     ageLabel: "Ages 6+",
-    badge: "new",
+    badge: "",
     inStock: true,
     skills: [
       "زيادة التركيز والانتباه والتذكر البصري",
